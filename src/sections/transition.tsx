@@ -2,7 +2,6 @@ import React from 'react'
 import { Box, Image, Stack, Button, Text } from 'grommet'
 import { InfoContainer } from '../components/info-container'
 import styled from 'styled-components'
-// import {ReactComponent as Squiggle} from '../assets/squiggle.svg';
 import { Avatar } from '../components/avatar';
 import { Squiggle } from '../components/squiggle';
 import { Serif } from '../components/serif';
@@ -14,7 +13,7 @@ import { Branch } from '../assets/branch';
 
 export const Transition = () => {
     return (
-            <Box
+        <Box
             direction="row"
             height={{min:"400px"}}
             width="100%"
@@ -41,7 +40,7 @@ export const Transition = () => {
                     <SubText>  PORTFOLIO </SubText>
                     <Book/>
                 </Container>
-                <Container>
+                <Container navigate="projects">
                     <SubText>  PROJECTS </SubText>
                     <Branch/>
                 </Container>

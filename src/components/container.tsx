@@ -2,14 +2,24 @@ import React from 'react'
 import { Box, Stack } from 'grommet'
 import {theme} from '../style/theme';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
-export const Container = ({children}:{children?:any}) => {
+export const Container = ({children, navigate}:{children?:any, navigate?:string}) => {
+    const history = useHistory()
+    
+    const navigation = () => {
+        if(navigate){
+            history.push(navigate)
+        } 
+    }
+
 
     return (
         <Frame
             width="25%" 
             height={{max:"220px", min:"220px"}}
             margin="small"
+            onClick={navigation}
         >
             <Stack anchor="top" fill>
                 <Box 
