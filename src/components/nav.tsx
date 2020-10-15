@@ -1,7 +1,11 @@
 import React from 'react'
 import { Box, Text } from 'grommet'
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
 
 export const Nav = () => {
+    const history = useHistory();
 
     return (
         <Box 
@@ -12,7 +16,7 @@ export const Nav = () => {
             background="neutral-3"
         >
 
-            <Text>H O M E</Text>
+            <Clickable onClick={()=>{history.push('/')}}>H O M E</Clickable>
             <Box direction="row" gap="small">
                 <Text color="light-1">R </Text>
                 <Text color="light-1">// </Text>
@@ -21,3 +25,9 @@ export const Nav = () => {
         </Box>
     )
 }
+
+const Clickable = styled(Text)`
+    &:hover {
+        cursor: pointer;
+    }
+`
