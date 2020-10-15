@@ -4,11 +4,13 @@ import styled from 'styled-components'
 import {ReactComponent as Email} from '../assets/email.svg'
 import {ReactComponent as LinkedIn} from '../assets/linkedin.svg'
 import {ReactComponent as Insta} from '../assets/insta.svg'
+import {ReactComponent as Git} from '../assets/github.svg'
 
 const illustrator="https://www.adobe.com/ca/products/illustrator.html"
 const grommet="https://v2.grommet.io/"
 const createReactApp="https://reactjs.org/docs/create-a-new-react-app.html"
 const styledComponents="https://styled-components.com/"
+const github="https://github.com/reagantakeuchi/reagantakeuchi-web"
 
 export const Footer = () => {
 
@@ -26,7 +28,7 @@ export const Footer = () => {
                         <SubLink href={styledComponents}> Styled Components </SubLink> <B/> 
                         <SubLink href={illustrator}> Adobe Illustrator</SubLink> <B/>
                         <br/>
-                        <br/> <Link>View the source code on my github &rarr;</Link>
+                        <br/> <Link href={github}>View the source code on my github &rarr;</Link>
                     </FooterText>
             </Box>
             <Box 
@@ -38,15 +40,18 @@ export const Footer = () => {
                 justify="end"
             >
                 <Grid rows={rows} columns={cols} areas={areas}>
-                    <Box gridArea="insta">
+                    <HoverIcon gridArea="insta">
                         <Insta height="40px"/>
-                    </Box>
-                    <Box gridArea="linkedin">
+                    </HoverIcon>
+                    <HoverIcon gridArea="linkedin">
                         <LinkedIn height="40px"/>
-                    </Box>
-                    <Box gridArea="email">
+                    </HoverIcon>
+                    <HoverIcon gridArea="email">
                         <Email height="40px"/>
-                    </Box>
+                    </HoverIcon>
+                    <HoverIcon gridArea="github">
+                        <Git height="40px"/>
+                    </HoverIcon>
                 </Grid>
             <FooterText size="xsmall" textAlign="end">
                 © REAGAN TAKEUCHI | 10.12.2020
@@ -57,11 +62,13 @@ export const Footer = () => {
 }
 
 const rows=['auto']
-const cols = ['60px','60px','60px']
+const cols = ['60px','60px','60px', '60px']
 const areas = [    
     { name: 'insta', start: [0, 0], end: [0, 0] },
     { name: 'linkedin', start: [1, 0], end: [1, 0] },
-    { name: 'email', start: [2, 0], end: [2, 0] }
+    { name: 'email', start: [2, 0], end: [2, 0] },
+    { name: 'github', start: [3, 0], end: [3, 0] }
+
 ]
 
 const B = () => (
@@ -89,5 +96,18 @@ const SubLink = styled(Anchor)`
     color: ${(props)=>props.theme.global.colors['dark-2']};
     &:hover{
         text-decoration: underline;
+    }
+`
+
+const HoverIcon = styled(Box)`
+    &:hover {
+        cursor: pointer;
+        .cls-1 {
+            fill:#e4e4e4;
+            stroke:${(props)=>props.theme.global.colors['dark-2']};
+        }
+        .cls-2 {
+            fill:${(props)=>props.theme.global.colors['dark-2']};
+        }
     }
 `
