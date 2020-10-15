@@ -13,10 +13,13 @@ export const NavSwitch = () => (
                     <Bio/>
                     <Footer/>
             </Router.Route>
-
+            <Router.Route path="/projects">
+                <UnderConstruction/>
+            </Router.Route>
         </Router.Switch>
     </Suspense>
 )
 
 const Landing = React.lazy(() => import('../sections/landing'));
 const Transition = React.lazy(() => import('../sections/transition'));
+const UnderConstruction = React.lazy(() => import('./pages/under-construction'));
