@@ -55,8 +55,20 @@ export const Bio = () => (
                     <Text textAlign="start" style={{letterSpacing:"0.1em", fontWeight:"lighter"}}>
                         I create graphic art, user interfaces and web applications (to name a few). My computer is my canvas! 
                         
-                        <br/><br/><LinkHover>&#x205B; LEARN MORE about me and what lights up my life</LinkHover> 
-                        <br/><LinkHover>&#x205B; CONTACT ME for business inquiries</LinkHover>
+                        <br/><br/>
+                        <LinkHover>
+                            {"Learn more "}
+                            <span style={{fontWeight:"lighter"}}>
+                                about me and what lights up my life
+                            </span>
+                        </LinkHover> 
+                        <br/>
+                        <LinkHover>
+                            {"Contact me "} 
+                            <span style={{fontWeight:"lighter"}}>
+                             for business inquiries 
+                            </span>
+                        </LinkHover>
 
                     </Text>
                 </Box>
@@ -67,7 +79,6 @@ export const Bio = () => (
 )
 
 const LinkHover = styled(Anchor)`
-    font-weight: lighter;
     color: ${(props)=>props.theme.global.colors['dark-2']};
     &:hover {
         text-decoration: none;
