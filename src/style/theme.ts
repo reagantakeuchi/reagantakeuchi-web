@@ -1,7 +1,7 @@
 export const theme = {
     global: {
         colors: {
-            'brand': '#eed7c5',
+            'brand': '#282727',
             'accent-1': "#c6b69e",
             'accent-2': "#d8c7b6",
             'neutral-1': "#eae3d8",
