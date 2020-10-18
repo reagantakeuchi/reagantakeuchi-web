@@ -5,15 +5,18 @@ import {ReactComponent as Email} from '../assets/email.svg'
 import {ReactComponent as LinkedIn} from '../assets/linkedin.svg'
 import {ReactComponent as Insta} from '../assets/insta.svg'
 import {ReactComponent as Git} from '../assets/github.svg'
+import { useHistory } from 'react-router-dom'
 
 const illustrator="https://www.adobe.com/ca/products/illustrator.html"
 const grommet="https://v2.grommet.io/"
 const createReactApp="https://reactjs.org/docs/create-a-new-react-app.html"
 const styledComponents="https://styled-components.com/"
-const github="https://github.com/reagantakeuchi/reagantakeuchi-web"
+const githubWeb="https://github.com/reagantakeuchi/reagantakeuchi-web"
+const githubProf="https://github.com/reagantakeuchi"
+const linkedin = "https://www.linkedin.com/in/reagan-takeuchi-a647421b9/"
 
 export const Footer = () => {
-
+    
     return (
         <Box width="100%" height="fit-content" direction="row">
             <Box width="70%" height="fit-content" pad="medium" background="light-1">
@@ -28,7 +31,7 @@ export const Footer = () => {
                         <SubLink href={styledComponents}> Styled Components </SubLink> <B/> 
                         <SubLink href={illustrator}> Adobe Illustrator</SubLink> <B/>
                         <br/>
-                        <br/> <Link href={github}>View the source code on my github &rarr;</Link>
+                        <br/> <Link href={githubWeb}>View the source code on my github &rarr;</Link>
                     </FooterText>
             </Box>
             <Box 
@@ -43,13 +46,13 @@ export const Footer = () => {
                     <HoverIcon gridArea="insta">
                         <Insta height="40px"/>
                     </HoverIcon>
-                    <HoverIcon gridArea="linkedin">
+                    <HoverIcon gridArea="linkedin" href={linkedin}>
                         <LinkedIn height="40px"/>
                     </HoverIcon>
                     <HoverIcon gridArea="email">
                         <Email height="40px"/>
                     </HoverIcon>
-                    <HoverIcon gridArea="github">
+                    <HoverIcon gridArea="github" href={githubProf}>
                         <Git height="40px"/>
                     </HoverIcon>
                 </Grid>
@@ -99,7 +102,7 @@ const SubLink = styled(Anchor)`
     }
 `
 
-const HoverIcon = styled(Box)`
+const HoverIcon = styled(Anchor)`
     &:hover {
         cursor: pointer;
         .cls-1 {
