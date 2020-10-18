@@ -32,11 +32,11 @@ export const Transition = () => {
                 {/* <Box width="100%" height="100%">
                     <Avatar/>
                 </Box> */}
-                <Container>
+                <Container navigate="resume">
                     <SubText>  RESUME </SubText>
                     <Resume/>
                 </Container>
-                <Container>
+                <Container navigate="portfolio">
                     <SubText>  PORTFOLIO </SubText>
                     <Book/>
                 </Container>
