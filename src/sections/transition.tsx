@@ -9,7 +9,7 @@ import portrait from '../assets/webportrait.jpg';
 import { Container } from '../components/container';
 import {Resume} from '../assets/penpaper'
 import { Book } from '../assets/book';
-import { Branch } from '../assets/branch';
+import { Store } from '../assets/store';
 
 export const Transition = () => {
     return (
@@ -33,16 +33,16 @@ export const Transition = () => {
                     <Avatar/>
                 </Box> */}
                 <Container navigate="resume">
-                    <SubText>  RESUME </SubText>
+                    <SubText>  ABOUT ME </SubText>
                     <Resume/>
                 </Container>
                 <Container navigate="portfolio">
                     <SubText>  PORTFOLIO </SubText>
                     <Book/>
                 </Container>
-                <Container navigate="projects">
-                    <SubText>  PROJECTS </SubText>
-                    <Branch/>
+                <Container navigate="store">
+                    <SubText>  STORE </SubText>
+                    <Store/>
                 </Container>
             </Box>
         </Box>

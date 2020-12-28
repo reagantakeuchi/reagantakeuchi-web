@@ -42,11 +42,11 @@ export const Landing = () => {
                     </Box>
                     <Box justify="start" gap="small" direction="row">
                         <SubText textAlign="start">
-                            FULL STACK DEVELOPER
-                        </SubText>
-                        <SubText textAlign="start"> // </SubText>
-                        <SubText textAlign="start">
                             WEB DESIGNER
+                        </SubText>
+                        <SubText textAlign="start"> | </SubText>
+                        <SubText textAlign="start">
+                            FULL STACK DEVELOPER
                         </SubText>
                     </Box>
 

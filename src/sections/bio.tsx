@@ -50,10 +50,11 @@ export const Bio = () => (
                     height="fit-content"
                     width="100%"
                     gap="medium"
+                    elevation="large"
                 >
 
                     <Text textAlign="start" style={{letterSpacing:"0.1em", fontWeight:"lighter"}}>
-                        I create graphic art, user interfaces and web applications (to name a few). My computer is my canvas! 
+                        I create graphic art, user interfaces and web applications.<br/> My computer is my canvas! 
                         
                         <br/><br/>
                         <LinkHover>
@@ -63,7 +64,7 @@ export const Bio = () => (
                             </span>
                         </LinkHover> 
                         <br/>
-                        <LinkHover>
+                        <LinkHover href='/contact'>
                             {"Contact me "} 
                             <span style={{fontWeight:"lighter"}}>
                              for business inquiries 

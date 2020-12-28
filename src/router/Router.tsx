@@ -8,12 +8,12 @@ export const NavSwitch = () => (
     <Suspense fallback={<div>Loading...</div>}>
         <Router.Switch>
             <Router.Route exact path="/">
-                    <Landing />
+                    <Landing />  
                     <Transition/>
                     <Bio/>
                     <Footer/>
             </Router.Route>
-            <Router.Route path="/projects">
+            <Router.Route path="/store">
                 <UnderConstruction/>
             </Router.Route>
             <Router.Route path="/resume">
