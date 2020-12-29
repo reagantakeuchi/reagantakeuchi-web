@@ -1,6 +1,5 @@
 import React,{Suspense} from 'react'
 import * as Router from 'react-router-dom';
-import { Box } from 'grommet';
 import { Bio } from '../sections/bio';
 import { Footer } from '../sections/footer';
 

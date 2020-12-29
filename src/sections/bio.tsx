@@ -1,8 +1,8 @@
 import React from 'react'
-import { Box, Stack, Text, Anchor } from 'grommet'
+import { Box, Text, Anchor } from 'grommet'
 import { Avatar } from '../components/avatar'
 import styled from 'styled-components'
-import {ReactComponent as Squig} from '../assets/squiggle.svg'
+// import {ReactComponent as Squig} from '../assets/squiggle.svg'
 
 export const Bio = () => (
     <Box

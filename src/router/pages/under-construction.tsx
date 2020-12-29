@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text, Anchor } from 'grommet'
+import { Box, Text } from 'grommet'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom';
 export const UnderConstruction = () => {

@@ -15,6 +15,6 @@ const Circle = styled(Box)`
 clip-path: circle(40% at 50% 45%);
 `
 
-const Scale = styled(Box)`
-    transform: scale(0.75, 0.75);
-`
+// const Scale = styled(Box)`
+//     transform: scale(0.75, 0.75);
+// `

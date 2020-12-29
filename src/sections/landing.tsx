@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box, Image, Stack, Text } from 'grommet'
+import { Box, Image, Text } from 'grommet'
 import Girl from '../assets/image.png';
-import Portrait from '../assets/portrait.png';
+// import Portrait from '../assets/portrait.png';
 
-import Hi from '../assets/hi.png';
+// import Hi from '../assets/hi.png';
 import styled from 'styled-components';
 
 export const Landing = () => {
@@ -76,8 +76,8 @@ const SubText = styled(Text)`
     color: ${(props)=>props.theme.global.colors['dark-1']};
 `
 
-const TagText = styled(Text)`
-    font-family: courier;
-    letter-spacing: 0.3rem;
-`
+// const TagText = styled(Text)`
+//     font-family: courier;
+//     letter-spacing: 0.3rem;
+// `
 

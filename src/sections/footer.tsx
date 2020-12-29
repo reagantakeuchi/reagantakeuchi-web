@@ -5,7 +5,6 @@ import {ReactComponent as Email} from '../assets/email.svg'
 import {ReactComponent as LinkedIn} from '../assets/linkedin.svg'
 import {ReactComponent as Insta} from '../assets/insta.svg'
 import {ReactComponent as Git} from '../assets/github.svg'
-import { useHistory } from 'react-router-dom'
 
 const illustrator="https://www.adobe.com/ca/products/illustrator.html"
 const grommet="https://v2.grommet.io/"
