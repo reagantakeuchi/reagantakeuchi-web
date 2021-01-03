@@ -5,24 +5,27 @@ import { Container } from '../components/container';
 import {Resume} from '../assets/penpaper'
 import { Book } from '../assets/book';
 import { Store } from '../assets/store';
+import { useDeviceContext } from '../device-context';
 
 export const Transition = () => {
+    const device = useDeviceContext()
+    if(device==='mobile') {
+        return <></>
+    }
+
     return (
         <Box
-            direction="row"
             height={{min:"400px"}}
             width="100%"
-            background="light-1" 
         >
             <Box
                 pad={{horizontal:"150px", vertical:"50px"}}
                 direction="row"
-                width="100%"
                 align="center"
                 height={{min:"100%"}}
                 background="dark-2"
-                gap="large"
                 justify="around"
+                wrap
             >
                 {/* <Box width="100%" height="100%">
                     <Avatar/>
@@ -46,6 +49,39 @@ export const Transition = () => {
 
 export default Transition;
 
+const MobileTransition = () => {
+    return (
+        <Box
+            pad={{horizontal:"40px", vertical:"20px"}}
+            direction="row"
+            align="center"
+            justify="center"
+            height={{min:"100%"}}
+            background="dark-2"
+            width="100%"
+            wrap
+        >
+                 <Box align="center">
+                    {/* <MobileText size="small">  ABOUT </MobileText> */}
+                    <Resume width="40px" height="40px"/>
+                </Box>
+                <Box align="center">
+                    {/* <MobileText size="small">  PORTFOLIO </MobileText> */}
+                    <Book width="40px" height="40px"/>
+                </Box>
+                <Box align="center">
+                    {/* <MobileText size="small">  STORE </MobileText> */}
+                    <Store width="40px" height="40px"/>
+                </Box>
+        </Box>
+    )
+}
+
+const MobileText = styled(Text)`
+    padding: 10px;
+    letter-spacing: 0.2rem;
+    color: ${(props)=>props.theme.global.colors['light-1']};
+`
 
 const SubText = styled(Text)`
     padding: 20px;
