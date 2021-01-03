@@ -13,7 +13,7 @@ import { useMediaQuery } from 'react-responsive';
 function deviceSwitch (
   devices:{desktop:boolean, bigScreen:boolean, mobile:boolean}
 ): Devices{
-  const {desktop, bigScreen, mobile} = devices;
+  const {desktop, bigScreen} = devices;
 
   if(desktop) return 'desktop'
   if(bigScreen) return 'bigScreen'

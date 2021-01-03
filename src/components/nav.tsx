@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Text } from 'grommet'
-import styled from 'styled-components';
+import { Box } from 'grommet'
+// import styled from 'styled-components';
 import { RedirectIcon } from '../style';
 import {ReactComponent as Insta} from '../assets/insta.svg'
 import {ReactComponent as LinkedIn} from '../assets/linkedin.svg'
@@ -35,15 +35,15 @@ export const Nav = () => {
         
     )
 }
-const Clickable = styled(Text)`
-    &:hover {
-        cursor: pointer;
-    }
-`
+// const Clickable = styled(Text)`
+//     &:hover {
+//         cursor: pointer;
+//     }
+// `
 
-const Spaced = styled(Box)`
-    letter-spacing: 0.1em;
-`
+// const Spaced = styled(Box)`
+//     letter-spacing: 0.1em;
+// `
 const hamburger = {
     mobile:{
         width:"20px",
