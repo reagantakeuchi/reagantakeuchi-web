@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Box} from 'grommet'
+import {Box, BoxTypes} from 'grommet'
 
-export const Book = () => (
+export const Book = ({...props}:BoxTypes) => (
     <Box
         margin={{horizontal:"large", vertical:"small"}}
         justify="center"
         align="center"   
+        {...props}
     >
         <SVG 
             xmlns="http://www.w3.org/2000/svg" 

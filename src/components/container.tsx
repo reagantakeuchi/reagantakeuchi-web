@@ -16,7 +16,7 @@ export const Container = ({children, navigate}:{children?:any, navigate?:string}
 
     return (
         <Frame
-            width="25%" 
+            width={{width: "25%", max: "300px", min:"200px"}}
             height={{max:"220px", min:"220px"}}
             margin="small"
             onClick={navigation}
@@ -25,7 +25,7 @@ export const Container = ({children, navigate}:{children?:any, navigate?:string}
                 <Box 
                     width="100%"
                     height={{min: "220px"}}
-                    style={{transform: "translateY(40px)"}}
+                    style={{transform: "translateY(40px)", whiteSpace:"nowrap"}}
                     border={{size:"small", color:"neutral-3"}}
                     pad={{top:"40px"}}
                 >

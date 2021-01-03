@@ -1,3 +1,4 @@
+import { Box } from 'grommet';
 import React,{Suspense} from 'react'
 import * as Router from 'react-router-dom';
 import { Bio } from '../sections/bio';
@@ -7,10 +8,12 @@ export const NavSwitch = () => (
     <Suspense fallback={<div>Loading...</div>}>
         <Router.Switch>
             <Router.Route exact path="/">
-                    <Landing />  
-                    <Transition/>
-                    <Bio/>
-                    <Footer/>
+                    <Box>
+                        <Landing />  
+                        <Transition/>
+                        <Bio/>
+                        <Footer/>
+                    </Box>
             </Router.Route>
             <Router.Route path="/store">
                 <UnderConstruction/>

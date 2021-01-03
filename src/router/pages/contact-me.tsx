@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Form, FormField, TextArea, Image, Text } from 'grommet'
-import { Button } from '../../style/button';
+import { Box, Form, FormField, TextArea, Image, Text, Button } from 'grommet'
 import { Send } from 'grommet-icons'
 import styled from 'styled-components'
 import Selfie from '../../assets/portrait.png'
@@ -67,7 +66,11 @@ export const Contact = () => {
                             <Send color="light-1"/>
                         </Plane>
                     </Box>
-                } primary/>
+                }
+                style={{borderRadius: 0}} 
+                primary
+
+                />
             </Box>
 
         </Box>

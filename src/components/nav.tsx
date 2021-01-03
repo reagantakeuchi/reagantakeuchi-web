@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Box, Text } from 'grommet'
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { RedirectIcon } from '../style';
+import {ReactComponent as Insta} from '../assets/insta.svg'
+import {ReactComponent as LinkedIn} from '../assets/linkedin.svg'
+import { HamMenu } from '../assets/hamburger_menu';
+import { useDeviceContext } from '../device-context';
 
 export const Nav = () => {
-    const history = useHistory();
-    const [path, setPath] = useState(history.location.pathname)
-
-    useEffect(()=>{
-        setPath(history.location.pathname)
-    },[history])
+    const device = useDeviceContext();
 
     return (
-        <Box 
-            width="100%" 
-            justify="between" 
-            direction="row" 
-            pad={{vertical: "xsmall", horizontal:"large"}}
-            background="neutral-3"
+        <Box
+            width="100%"
+            height="max-content"
+            pad="20px"
+            align="center"
+            justify="between"
+            direction="row"
+            background='light-2'
         >
-            <Spaced direction="row" gap="medium">
-                <Clickable onClick={()=>{history.push('/')}}>H O M E</Clickable>
-                {">> "+ path.substring(1, path.length)}
-            </Spaced>
-            <Box direction="row" gap="small">
-                <Text color="light-1">R </Text>
-                <Text color="light-1">// </Text>
-                <Text color="light-1">T A K E U C H I</Text>
+            <HamMenu {...hamburger[device]}/>
+            <Box direction="row" align="center" gap="small">
+                <RedirectIcon stroke="dark-2">
+                    <Insta height="30px"/>
+                </RedirectIcon>
+                <RedirectIcon stroke="dark-2">
+                    <LinkedIn height="30px"/>
+                </RedirectIcon>
             </Box>
+
+
         </Box>
+        
     )
 }
-
 const Clickable = styled(Text)`
     &:hover {
         cursor: pointer;
@@ -42,3 +44,16 @@ const Clickable = styled(Text)`
 const Spaced = styled(Box)`
     letter-spacing: 0.1em;
 `
+const hamburger = {
+    mobile:{
+        width:"20px",
+        height:"20px"
+    },
+    desktop:{
+        width: "24px",
+        height:"24px",
+    },
+    bigScreen:{
+        
+    }
+}

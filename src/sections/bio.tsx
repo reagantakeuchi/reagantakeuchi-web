@@ -2,9 +2,50 @@ import React from 'react'
 import { Box, Text, Anchor } from 'grommet'
 import { Avatar } from '../components/avatar'
 import styled from 'styled-components'
+import { useDeviceContext } from '../device-context'
 // import {ReactComponent as Squig} from '../assets/squiggle.svg'
 
-export const Bio = () => (
+export const Bio = () => {
+    const device = useDeviceContext();
+    if(device==='mobile') {
+        return (<MobileBio/>)
+    }
+    return (
+        <WebBio/>
+    )
+}
+
+const MobileBio = () => (
+    <>
+    <Box background="dark-2" direction="row" >
+        <Box width={{min:"max-content"}} align="center" justify="center">
+            <Box height="150px" width="150px">
+                <Avatar/>
+            </Box>
+        </Box>
+        <Box 
+            pad={{vertical: 'medium', left:'large'}} 
+            border={{side:"left", size:"3px", color:"light-2"}}
+            margin={{left:"large", vertical:"large"}}
+        >
+            
+            <Text 
+                color="light-2"
+                weight="bold"
+                textAlign="start" 
+                size="xlarge"
+                style={{lineHeight:"1.5em"}}
+            >
+                    Computer Scientist 
+                    <br/>by trade<br/> 
+                    Designer by heart
+            </Text>
+        </Box>
+    </Box>
+    </>
+)
+
+const WebBio = () => (
     <Box
         width="100%"
         height={{min:"400px"}}
@@ -39,7 +80,7 @@ export const Bio = () => (
                         weight="bold"
                         textAlign="start" 
                         size="xxlarge"
-                        style={{lineHeight:"1.5em", fontFamily:"book antigua"}}
+                        style={{lineHeight:"1.5em"}}
                     >
                         Computer Scientist by trade |<br/> Designer by heart
                     </Text>
