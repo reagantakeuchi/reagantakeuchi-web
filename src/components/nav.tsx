@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Anchor, Box, Button, Form, Layer } from 'grommet'
+import { Anchor, Box, Button, Layer } from 'grommet'
 // import styled from 'styled-components';
 import { RedirectIcon, SubText } from '../style';
 import {ReactComponent as Insta} from '../assets/insta.svg'
