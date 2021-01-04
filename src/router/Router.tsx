@@ -15,10 +15,10 @@ export const NavSwitch = () => (
                         <Footer/>
                     </Box>
             </Router.Route>
-            <Router.Route path="/store">
+            <Router.Route path="/shop">
                 <UnderConstruction/>
             </Router.Route>
-            <Router.Route path="/resume">
+            <Router.Route path="/about-me">
                 <UnderConstruction/>
             </Router.Route>
             <Router.Route path="/portfolio">

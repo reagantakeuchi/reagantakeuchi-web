@@ -30,7 +30,7 @@ export const Transition = () => {
                 {/* <Box width="100%" height="100%">
                     <Avatar/>
                 </Box> */}
-                <Container navigate="resume">
+                <Container navigate="about-me">
                     <SubText>  ABOUT ME </SubText>
                     <Resume/>
                 </Container>
@@ -38,7 +38,7 @@ export const Transition = () => {
                     <SubText>  PORTFOLIO </SubText>
                     <Book/>
                 </Container>
-                <Container navigate="store">
+                <Container navigate="shop">
                     <SubText>  STORE </SubText>
                     <Store/>
                 </Container>
