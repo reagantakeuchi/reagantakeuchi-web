@@ -5,7 +5,7 @@ import { RedirectIcon, SubText } from '../style';
 import {ReactComponent as Insta} from '../assets/insta.svg'
 import {ReactComponent as LinkedIn} from '../assets/linkedin.svg'
 import { HamMenu } from '../assets/hamburger_menu';
-import { Devices, useDeviceContext } from '../device-context';
+import { Devices, useDeviceContext } from '../context';
 import {Close} from 'grommet-icons';
 import { useHistory } from 'react-router-dom';
 import { instagram, linkedin } from '../static/links';

@@ -17,8 +17,8 @@ export const theme = {
             'dark-2': '#282727',
             'dark-3': '#3b3b3b',
             'dark-4': '#494949',
-            'dark-5': '#666666'
-
+            'dark-5': '#666666',
+            'focus' : 'light-1'
         }
     }
 }

@@ -7,7 +7,7 @@ import {ReactComponent as Insta} from '../assets/insta.svg'
 import {ReactComponent as Git} from '../assets/github.svg'
 import { RedirectIcon } from '../style'
 import { createReactApp, githubProf, githubWeb, grommet, illustrator, instagram, linkedin, styledComponents } from '../static/links'
-import { useDeviceContext } from '../device-context'
+import { useDeviceContext } from '../context'
 
 export const Footer = () => {
     const device = useDeviceContext();

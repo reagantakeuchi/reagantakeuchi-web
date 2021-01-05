@@ -1,8 +1,9 @@
 import React from 'react'
-import { Box, Form, FormField, TextArea, Image, Text, Button } from 'grommet'
+import { Box, Form, FormField, TextArea, Image, Text } from 'grommet'
 import { Send } from 'grommet-icons'
 import styled from 'styled-components'
 import Selfie from '../../assets/portrait.png'
+import { Button } from '../../style'
 
 export const Contact = () => {
     return (
@@ -21,7 +22,7 @@ export const Contact = () => {
                 }}
                 width="20px"
             >
-                <Text size="large" color="dark-3" weight="bold"> 
+                <Text size="xlarge" color="dark-3" weight="bold"> 
                     CONTACT 
                 </Text>
             </Box>
@@ -49,28 +50,16 @@ export const Contact = () => {
                         <TextArea/>
                     </FormElement>
                     <Box>
-                        Add ReCaptcha Here
+                        {/* Add ReCaptcha Here */}
                     </Box>
 
                 </Form>
-                <Button label={
-                    <Box 
-                        direction="row" 
-                        gap="small" 
-                        style={{letterSpacing:"0.1em"}} 
-                        align='center' 
-                        justify="center"
-                    >
-                        Send
-                        <Plane>
-                            <Send color="light-1"/>
-                        </Plane>
-                    </Box>
-                }
-                style={{borderRadius: 0}} 
-                primary
-
-                />
+                <Button>
+                    Send
+                    <Plane>
+                        <Send color="light-1"/>
+                    </Plane>
+                </Button>
             </Box>
 
         </Box>
