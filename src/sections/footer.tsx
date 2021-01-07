@@ -7,7 +7,8 @@ import {ReactComponent as Insta} from '../assets/insta.svg'
 import {ReactComponent as Git} from '../assets/github.svg'
 import { RedirectIcon } from '../style'
 import { createReactApp, githubProf, githubWeb, grommet, illustrator, instagram, linkedin, styledComponents } from '../static/links'
-import { useDeviceContext } from '../device-context'
+import { useDeviceContext } from '../context'
+import { useHistory } from 'react-router-dom'
 
 export const Footer = () => {
     const device = useDeviceContext();
@@ -47,6 +48,8 @@ export const Footer = () => {
 }
 
 const DesktopIconGrid = () => {
+    const history = useHistory()
+
     return (
         <Grid 
             rows={rows.desktop} 
@@ -62,7 +65,7 @@ const DesktopIconGrid = () => {
                 <LinkedIn height="40px"/>
             </RedirectIcon>
             <RedirectIcon gridArea="email">
-                <Email height="40px"/>
+                <Email height="40px" onClick={()=>{history.push("contact")}}/>
             </RedirectIcon>
             <RedirectIcon gridArea="github" href={githubProf}>
                 <Git height="40px"/>
@@ -72,7 +75,7 @@ const DesktopIconGrid = () => {
 }
 
 const MobileIconGrid = () =>{
-
+    const history = useHistory()
     return (
         <Grid 
             rows={rows.mobile} 
@@ -89,7 +92,7 @@ const MobileIconGrid = () =>{
                 <LinkedIn height="34px"/>
             </RedirectIcon>
             <RedirectIcon gridArea="email">
-                <Email height="34px"/>
+                <Email height="34px" onClick={()=>{history.push('contact')}}/>
             </RedirectIcon>
             <RedirectIcon gridArea="github" href={githubProf}>
                 <Git height="34px"/>

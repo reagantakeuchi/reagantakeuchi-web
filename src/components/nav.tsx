@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Anchor, Box, Button, Form, Layer } from 'grommet'
+import { Anchor, Box, Button, Layer } from 'grommet'
 // import styled from 'styled-components';
 import { RedirectIcon, SubText } from '../style';
 import {ReactComponent as Insta} from '../assets/insta.svg'
 import {ReactComponent as LinkedIn} from '../assets/linkedin.svg'
 import { HamMenu } from '../assets/hamburger_menu';
-import { Devices, useDeviceContext } from '../device-context';
+import { Devices, useDeviceContext } from '../context';
 import {Close} from 'grommet-icons';
 import { useHistory } from 'react-router-dom';
 import { instagram, linkedin } from '../static/links';

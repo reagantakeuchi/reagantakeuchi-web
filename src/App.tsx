@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {BrowserRouter as Router} from 'react-router-dom';
-import { Box, Grommet } from 'grommet';
+import { Grommet, Layer } from 'grommet';
 import { NavSwitch } from './router/Router';
 import { theme } from './style/theme';
 import { Nav } from './components/nav';
 import styled from 'styled-components';
-import { DeviceContext, Devices } from './device-context';
+import { DeviceContext, Devices } from './context';
 import { useMediaQuery } from 'react-responsive';
 
 
@@ -28,7 +28,7 @@ function App() {
   }
 
   const device = deviceSwitch(media);
-  
+
   return (
     <Grommet className="App" theme={theme} background={theme.global.colors['light-2']}>
         <Router>
@@ -50,8 +50,12 @@ const layoutWidth = {
 }
 
 
-const Layout = styled(Box)<{device: Devices}>`
+const Layout = styled.div<{device: Devices}>`
   ${(props)=>layoutWidth[props.device]};
+  display: grid;
+  height: max-content;
+  min-height: 100vh;
+  grid-template-rows: min-content auto;
 `
 
 export default App;

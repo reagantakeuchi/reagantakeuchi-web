@@ -4,11 +4,18 @@ import Girl from '../assets/image.png';
 // import Portrait from '../assets/portrait.png';
 // import Hi from '../assets/hi.png';
 import styled from 'styled-components';
-import { useDeviceContext } from '../device-context';
+import { useDeviceContext } from '../context';
+import { Button } from '../style';
+import { Cart } from 'grommet-icons';
+import { useHistory } from 'react-router-dom';
 
 export const Landing = () => {
     const device = useDeviceContext();
+    const history = useHistory();
 
+    const navigateToStore = () => {
+        history.push('shop')
+    }
     if(device==='mobile') {
         return (
             <Box 
@@ -18,11 +25,15 @@ export const Landing = () => {
                 height="92vh"
                 gap="medium"
             >
-                <Welcome/>
+                <Welcome onClick={navigateToStore}/>
                 <Box 
                     width="100%"
                     height={{max:"30%"}}
                     pad={{vertical:"medium"}}
+                    animation={{
+                        type: "slideUp",
+                        duration: 3000
+                    }}
                 >
                     <Image fit="cover" src={Girl}/>
                 </Box>
@@ -40,12 +51,16 @@ export const Landing = () => {
                 pad={{left:"xlarge"}}
             >
 
-                <Welcome/>
+                <Welcome onClick={navigateToStore}/>
 
                 <Box 
                     width="40%" 
                     justify="end" 
                     height="100%" 
+                    animation={{
+                        type: "slideLeft",
+                        duration: 3000
+                    }}
                 >
                     <Image fit="cover" src={Girl}/>
                 </Box>
@@ -53,7 +68,7 @@ export const Landing = () => {
     )
 }
 
-const Welcome = () => (
+const Welcome = ({onClick}:{onClick:()=>void}) => (
 <Box 
     align="start" 
     gap="medium" 
@@ -77,6 +92,17 @@ const Welcome = () => (
             FULL STACK DEVELOPER
         </SubText>
     </Box>
+    <Box margin={{top:"medium"}}>
+        <Button primary color="neutral-4" onClick={onClick}>
+            <ButtonLabel gap="small" direction="row">
+                {/* <ButtonLabel> */}
+                    <Cart color="light-1"/>
+                    {"shop design by rea"}
+                {/* </ButtonLabel> */}
+            </ButtonLabel>
+        </Button>
+    </Box>
+
 </Box>
 
 
@@ -84,9 +110,18 @@ const Welcome = () => (
 
 export default Landing;
 
+const ButtonLabel = styled(Box)`
+    letter-spacing: 0.2em;
+    line-height: 1.5em;
+    text-align: start;
+    &:hover {
+        letter-spacing: 0.3em;
+    }
+    transition: letter-spacing 0.3s linear;
+`
+
 const Heading = styled(Text)`
     font-weight: bold;
-    font-family: book antigua;
     line-height: 5.5rem;
     letter-spacing: 0.2rem;
 `

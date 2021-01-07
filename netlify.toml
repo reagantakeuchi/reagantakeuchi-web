@@ -9,11 +9,11 @@
   # root directory if a base has not been set. This sample publishes the
   # directory located at the absolute path "root/project/build-output"
   publish = "build/"
-  command = "yarn build"
+  command = "CI=false yarn build"
 
 
 # Production context: all deploys from the Production branch set in your site’s
 # deploy contexts will inherit these settings.
 [context.production]
   publish = "build/"
-  command = "yarn build"
+  command = "CI=false yarn build"

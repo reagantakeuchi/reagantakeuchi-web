@@ -5,7 +5,7 @@ import { Container } from '../components/container';
 import {Resume} from '../assets/penpaper'
 import { Book } from '../assets/book';
 import { Store } from '../assets/store';
-import { useDeviceContext } from '../device-context';
+import { useDeviceContext } from '../context';
 
 export const Transition = () => {
     const device = useDeviceContext()
@@ -17,19 +17,25 @@ export const Transition = () => {
         <Box
             height={{min:"400px"}}
             width="100%"
+            background="dark-2"
+            justify='center'
+            align="center"
         >
             <Box
-                pad={{horizontal:"150px", vertical:"50px"}}
+                margin={{horizontal:"150px", vertical:"50px"}}
                 direction="row"
-                align="center"
                 height={{min:"100%"}}
-                background="dark-2"
-                justify="around"
+                width="900px"
+                justify="between"
                 wrap
             >
                 {/* <Box width="100%" height="100%">
                     <Avatar/>
                 </Box> */}
+                <Container navigate="shop">
+                    <SubText>  STORE </SubText>
+                    <Store/>
+                </Container>
                 <Container navigate="about-me">
                     <SubText>  ABOUT ME </SubText>
                     <Resume/>
@@ -38,10 +44,7 @@ export const Transition = () => {
                     <SubText>  PORTFOLIO </SubText>
                     <Book/>
                 </Container>
-                <Container navigate="shop">
-                    <SubText>  STORE </SubText>
-                    <Store/>
-                </Container>
+
             </Box>
         </Box>
     )
