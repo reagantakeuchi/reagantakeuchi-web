@@ -16,7 +16,7 @@ export const NavSwitch = () => (
                     </Box>
             </Router.Route>
             <Router.Route path="/shop">
-                <UnderConstruction/>
+                <Store/>
             </Router.Route>
             <Router.Route path="/about-me">
                 <AboutMe/>
@@ -36,3 +36,4 @@ const Transition = React.lazy(() => import('../sections/transition'));
 const UnderConstruction = React.lazy(() => import('./pages/under-construction'));
 const ContactMe = React.lazy(() => import('./pages/contact-me'))
 const AboutMe = React.lazy(() => import('./pages/about-me'))
+const Store = React.lazy(() => import('./pages/store'))

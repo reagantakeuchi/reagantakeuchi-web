@@ -1,84 +1,55 @@
 import React from 'react'
-import { Box, Form, FormField, TextArea, Image, Text } from 'grommet'
-import { Send } from 'grommet-icons'
+import { Box, Text } from 'grommet'
 import styled from 'styled-components'
-import Selfie from '../../assets/portrait.png'
-import { Button } from '../../style'
+import { useHistory } from 'react-router-dom';
+import { MailOption } from 'grommet-icons'
+export const UnderConstruction = () => {
+    const history = useHistory();
 
-export const Contact = () => {
     return (
         <Box 
-            height="80vh" 
-            direction="row"
-            margin="large" 
-            align="center"
-        > 
-            <Box
-                align="center"
-                style={{
-                    letterSpacing:"1.5em",
-                    fontFamily:"book antigua",
-                    transform:"rotate(-90deg)",
+            align="center" 
+            pad={{top:"xlarge"}}
+            background="light-2"
+            margin="medium"
+        >
+            <Box 
+                height="fit-content" 
+                border={{
+                    size:"medium",
+                    color:"neutral-2"
                 }}
-                width="20px"
-            >
-                <Text size="xlarge" color="dark-3" weight="bold"> 
-                    CONTACT 
-                </Text>
-            </Box>
-            <Box 
-                height="300px" 
-                align="center" 
-                justify="center" 
-                background="neutral-1"
-                style={{transform:"translateX(250px)"}}
-            >
-                <Image src={Selfie} height="300px" opacity="70%"/>
-            </Box>
-            <Box 
-                pad='xlarge' 
-                width="700px" 
-                justify="start" 
-                align="end" 
-                background="dark-2"
+                pad="large" 
                 gap="medium"
+                align="center"
             >
-                <Form>
-                    <FormElement label="Name" required/>
-                    <FormElement label="Email" required/>
-                    <FormElement label="Message" required>
-                        <TextArea/>
-                    </FormElement>
-                    <Box>
-                        {/* Add ReCaptcha Here */}
-                    </Box>
-
-                </Form>
-                <Button>
-                    Send
-                    <Plane>
-                        <Send color="light-1"/>
-                    </Plane>
-                </Button>
+                <MailOption/>
+                <Spaced size="large" style={{fontStyle:"italic"}}>
+                    hello@reagantakeuchi.com
+                </Spaced>
+                <Spaced>
+                    My contact form is under construction... for now, please email me
+                </Spaced>
             </Box>
-
+            <Box alignSelf="start" pad="large">
+                <HoverLink onClick={()=>{history.goBack()}}> &larr; go back</HoverLink>
+            </Box>
         </Box>
     )
 }
 
-const Plane = styled.div`
-    >svg {
-        transform: translateY(2px);
-        > path {
-            stroke-width: 1px;
-        }
+const Spaced = styled(Text)`
+    letter-spacing: 0.1em;
+    color: ${(props)=>props.theme.global.colors['dark-5']};
+`
+const HoverLink = styled(Text)`
+    letter-spacing: 0.1em;
+    &:hover {
+        letter-spacing: 0.2em;
+        cursor: pointer;
     }
+    transition: all .4s linear;
+
 `
 
-const FormElement = styled(FormField)`
-    > label {
-        align-self: start;
-    }
-`
-
-export default Contact;
+export default UnderConstruction;

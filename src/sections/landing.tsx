@@ -122,7 +122,6 @@ const ButtonLabel = styled(Box)`
 
 const Heading = styled(Text)`
     font-weight: bold;
-    font-family: book antigua;
     line-height: 5.5rem;
     letter-spacing: 0.2rem;
 `

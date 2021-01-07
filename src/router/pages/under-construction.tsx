@@ -7,11 +7,10 @@ export const UnderConstruction = () => {
 
     return (
         <Box 
-            width="100%" 
-            height="100vh" 
             align="center" 
             pad={{top:"xlarge"}}
             background="light-2"
+            margin="medium"
         >
             <Box 
                 height="fit-content" 
