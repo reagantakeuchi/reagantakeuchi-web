@@ -41,10 +41,11 @@ const ContactForm = () => {
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e:any) => {
+    console.log(encode({ "form-name": "contact", ...value }))
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", value })
+      body: encode({ "form-name": "contact", ...value })
     })
       .then(() => alert("Success!"))
       .catch(error => alert(error));
