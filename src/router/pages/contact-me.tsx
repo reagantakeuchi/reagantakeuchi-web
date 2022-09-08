@@ -52,9 +52,6 @@ const ContactForm = () => {
         }}
         validate="blur"
         method="post"
-        onSubmit={(props: any) => {
-          console.log(props);
-        }}
       >
         <input type="hidden" name="contact-form" value="contact" />
         <FormField label="Name" name="name" required>
