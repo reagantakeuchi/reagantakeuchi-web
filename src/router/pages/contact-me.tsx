@@ -30,9 +30,27 @@ const defaultValue = {
   message: "",
 };
 
+const encode = (data:any) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+}
+
 const ContactForm = () => {
   const [value, setValue] = useState(defaultValue);
   const [success, setSuccess] = useState(false);
+
+  const handleSubmit = (e:any) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", value })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+
+    e.preventDefault();
+  };
 
   return (
     <FormContainer pad="large" background="light-3" width="500px">
@@ -47,13 +65,13 @@ const ContactForm = () => {
         name="contact-form"
         value={value}
         onChange={(nextValue: any, { touched }) => {
-          console.log("Change", nextValue, touched);
           setValue(nextValue);
         }}
         validate="blur"
         method="post"
+        onSubmit={handleSubmit}
       >
-        <input type="hidden" name="contact-form" value="contact" />
+        <input type="hidden" name="form-name" value="contact" />
         <FormField label="Name" name="name" required>
           <TextInput name="name" type="text" />
         </FormField>
