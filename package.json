@@ -16,7 +16,7 @@
     "grommet": "^2.15.0",
     "netlify": "^6.0.7",
     "netlify-cli": "^2.69.11",
-    "prettier": "^2.1.1",
+    "prettier": "2.7.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-responsive": "^8.2.0",
