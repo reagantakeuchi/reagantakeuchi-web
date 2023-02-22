@@ -7,8 +7,7 @@ type Heading = {
   children: any;
 };
 
-export const Heading = (props: Heading) => {
-  const { level, children } = props;
+export const Heading = ({level ,children}: Heading) => {
 
   switch (level) {
     case 1:
@@ -17,28 +16,39 @@ export const Heading = (props: Heading) => {
       return <Heading2> {children} </Heading2>;
     case 3:
       return <Heading3> {children} </Heading3>;
+    case 4:
+      return <Heading4> {children} </Heading4>;
     default:
       return <Heading1>{children}</Heading1>;
   }
 };
 
 const Heading1 = styled(Text)`
-  font-weight: bold;
-  font-size: 4rem;
-  line-height: 5.5rem;
-  letter-spacing: 0.2rem;
-  padding: 48px;
+  color: ${(props) => props.theme.global.colors["dark-1"]};
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
 `;
 
 const Heading2 = styled(Text)`
   color: ${(props) => props.theme.global.colors["dark-1"]};
-  font-weight: bold;
-  font-size: 2rem;
-  padding: 16px 0px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+`;
+
+const Heading4 = styled(Text)`
+  color: ${(props) => props.theme.global.colors["dark-1"]};
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
 `;
 
 const Heading3 = styled(Text)`
   color: ${(props) => props.theme.global.colors["dark-1"]};
-  font-weight: 550;
+  text-transform: uppercase;
+  font-weight: 700;
   font-size: 1rem;
+  line-height: 1.25rem;
+  padding-bottom: 8px;
 `;

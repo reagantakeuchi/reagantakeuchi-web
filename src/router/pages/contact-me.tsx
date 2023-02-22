@@ -10,13 +10,11 @@ import {
 import styled from "styled-components";
 import { Heading } from "../../style";
 import { Send } from "grommet-icons";
-export const UnderConstruction = () => {
+export const ContactMe = () => {
   return (
     <Box
       align="center"
-      pad={{ top: "medium", bottom: "large" }}
-      background="light-2"
-      margin="medium"
+      round
     >
       <ContactForm />
     </Box>
@@ -54,12 +52,12 @@ const ContactForm = () => {
   };
 
   return (
-    <FormContainer pad="large" background="light-3" width="500px">
+    <FormContainer width="500px">
       <Box direction="row">
-        <Heading level={2}>
+        {/* <Heading level={2}>
           <Send color="dark-1" />
           {" Contact Me"}
-        </Heading>
+        </Heading> */}
       </Box>
 
       <Form
@@ -90,7 +88,7 @@ const ContactForm = () => {
         <FormField label="Message" name="message" required>
           <TextArea name="message" resize={false} />
         </FormField>
-        <Button label="Send" type="submit" />
+        <Button label="Send" type="submit" primary/>
       </Form>
     </FormContainer>
   );
@@ -108,27 +106,27 @@ const validEmail = (email: string) => {
 
 const TextInput = styled(TextInputG)`
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 400;
 `;
 const TextArea = styled(TextAreaG)`
   width: 100%;
-  min-height: 150px;
-  font-size: 0.9rem;
+  min-height: 100px;
+  font-size: 0.8rem;
   font-weight: 400;
 `;
 
 const FormField = styled(FormFieldG)`
   width: inherit;
   align-items: start;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 400;
   & > span {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 400;
   }
   & > label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   & > div {
     width: 100%;
@@ -138,9 +136,10 @@ const FormField = styled(FormFieldG)`
   }
 `;
 
+
 const FormContainer = styled(Box)`
   text-align: start;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 12px 12px 0px;
 `;
 
-export default UnderConstruction;
+export default ContactMe;

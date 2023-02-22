@@ -1,206 +1,289 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Box, Image, Stack, Grid, Text, Anchor } from "grommet";
 import HeroImage from "../../assets/HeroImage.jpg";
-
-// import Portrait from '../assets/portrait.png';
-// import Hi from '../assets/hi.png';
 import styled from "styled-components";
 import { useDeviceContext } from "../../context";
-import { Button, SubText, HeroHeading, Heading } from "../../style";
-import { useHistory } from "react-router-dom";
+import { Button, SubText, HeroHeading, Heading, Body } from "../../style";
+import {motion} from 'framer-motion';
 import {
-  Book,
   Code,
-  Gallery,
   PersonalComputer,
   Paint,
   Select,
-  Instagram,
-  LinkedinOption,
-  Github,
-  MailOption,
+  LinkDown
 } from "grommet-icons";
 
+type AnimateBlockType = {
+  index: number,
+  content?: string,
+  start: number,
+  end: number,
+  icon?: JSX.Element
+}
+
+const ITEMS: string[] = [
+  "UX/UI Design | Bold Commerce",
+  "Front End Developer",
+  "University of Manitoba | Bachelor of Computer Science",
+  "Freelance Graphic Design + Digital Art"
+];
+
+const ICONS = [
+  <PersonalComputer/>,
+  <Select/>,
+  <Code/>,
+  <Paint/>
+]
+
+const SHOWCHAR = 0.01
+const TYPEWRITER_KEYPRESS = 0.05;
+const TypewriterTime = (chars:number) => (TYPEWRITER_KEYPRESS+SHOWCHAR)*chars;
+
+
 export const Landing = () => {
-  const device = useDeviceContext();
-  if (device === "mobile") {
-    return <MobileLanding />;
-  }
-  return <DesktopLanding />;
-};
 
-const MobileLanding = () => {
   return (
-    <Box pad="large" background="light-2" justify="center" gap="medium">
-      <Box
-        gap="medium"
-        justify="center"
-        animation={{
-          type: "slideUp",
-          duration: 3000,
-        }}
-      >
-        <SubText>HELLO I'M</SubText>
-        <HeroHeading color="dark-3" textAlign="start">
-          Reagan <br /> Takeuchi
-        </HeroHeading>
-        <SubText textAlign="start">
-          UX/UI Designer | Front End Developer
-        </SubText>
-      </Box>
-      <Box
-        width="100%"
-        height={{ max: "30%" }}
-        pad={{ vertical: "medium" }}
-        animation={{
-          type: "slideUp",
-          duration: 3000,
-        }}
-      >
-        {/* <Image fit="cover" src={HeroImage}/> */}
-      </Box>
-    </Box>
-  );
-};
-
-export const DesktopLanding = () => {
-  return (
-    <Grid fill="vertical" columns={["auto"]} rows={["85vh", "auto", "auto"]}>
+    <div>
       <HeroBanner />
-      <CVSummary />
+      <Section/>
+      <Section/>
+      <Section/>
+
+    </div>
+  )
+};
+
+export const Section = () => {
+  return (
+    <Grid 
+      pad={{vertical:"medium"}}
+      fill
+      gap="large"
+      columns={["50%", "50%"]} 
+    >
+      <Box fill="horizontal" height="300px" background="#FFFFFF">
+        Image
+      </Box>
+      <Box fill align="start" justify="center">
+        <SubText>
+          Case study
+        </SubText>
+        <Text size="72px" weight="bold">
+          Util
+        </Text>
+      </Box>
+    
+    </Grid>
+  )
+}
+
+export const HeroBanner = () => {
+  return (
+    <Grid 
+      fill="vertical" 
+      columns={["auto"]} 
+      rows={["85vh", "auto"]}
+    >
+      <Intro />
+      <LinkBounce
+        animate={{ y: -14 }}
+        dragTransition={{
+          min: 0,
+          max: 100,
+          bounceDamping: 10
+        }}
+        transition={{    
+          duration: 0.8,
+          yoyo: Infinity,
+          ease: "easeOut",
+        }}
+      >
+        <LinkDown/>
+      </LinkBounce>
     </Grid>
   );
 };
 
-const HeroBanner = () => {
-  const history = useHistory();
+const LinkBounce = styled(motion.div)`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 48px;
+`
 
+const Intro = () => {
   return (
-    <Box direction="row" pad={{ left: "large" }}>
-      <Stack fill anchor="bottom">
-        <Stack fill>
-          <Box height="97%" width="100%">
-            <Image fill="horizontal" fit="cover" src={HeroImage} />
-          </Box>
-          <GradientBox width="100%" height="100%" />
+    <Box direction="row" pad={{ left: "xlarge" }} background="#1a1a1a">
           <Box
             align="start"
-            gap="medium"
+            gap="small"
             justify="center"
-            animation={{
-              type: "slideUp",
-              duration: 3000,
-            }}
             height="100%"
           >
             <SubText>HELLO I'M</SubText>
-            <HeroHeading color="dark-3" textAlign="start">
+            <HeroHeading color="#ffffff" textAlign="start">
               Reagan <br /> Takeuchi
             </HeroHeading>
-            <SubText textAlign="start">
-              UX/UI Designer | Front End Developer
-            </SubText>
           </Box>
-        </Stack>
-        <Box width={{ min: "40vw" }}>
-          <Button
-            fill="horizontal"
-            onClick={() => {
-              history.push("/portfolio");
-            }}
+          <Box
+            height="100%"
+            width="40%"
+            justify="center"
           >
-            Visit my portfolio
-          </Button>
-        </Box>
-      </Stack>
+            <CVSummaryBlock/>
+          </Box>
     </Box>
   );
 };
 
-const CVSummary = () => {
+function buildTimer () {
+  let prev = 0;
+  let list = ITEMS.map((i, x)=>{
+    let start = prev;
+    prev = prev+TypewriterTime(i.length);
+    
+    return {
+      index: x,
+      content: i,
+      icon: ICONS[x],
+      start: start,
+      end: prev
+    }      
+  })
+  return list;
+}
+
+const CVSummaryBlock = () => {
+
+  const [list, setList] = useState(buildTimer());
+  const [curr, setCurr] = useState<AnimateBlockType>(list[0]);
+
+  useEffect(() => {
+    const timer =
+      setInterval(() => {
+        setCurr(list[((curr.index+1)%list.length)]);
+      }, 3000);
+    return () => clearInterval(timer);
+  }, [curr]);
+
+
   return (
-    <Box pad="xlarge" alignContent="center" justify="center">
-      <Grid
-        columns={["1/3", "1/3", "1/3"]}
-        fill="horizontal"
-        gap={{ row: "xlarge", column: "small" }}
-        justify="center"
+    <CVContainer
+    >
+      <CVSummaryItem 
+        icon={curr.icon}
       >
-        <CVItem heading="Digital Art" icon={<Paint color="dark-3" />}>
-          Reagan runs and operates her own small business where she recreates
-          photos of pets and loved ones in a digital color block style
-        </CVItem>
-        <CVItem
-          heading="Master of Business Administration - Student"
-          icon={<Book color="dark-3" />}
-        >
-          Currently enrolled in the program at the University of Manitoba,
-          Reagan plans to graduate in 2024 with a concentration in Management
-          and Leadership
-        </CVItem>
-        <CVItem
-          heading="Freelance graphic and web design"
-          icon={<Gallery color="dark-3" />}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend
-          mauris in ipsum consequat gravida. Vivamus ultrices dolor eget est
-          sollicitudin efficitur.
-        </CVItem>
-        <CVItem heading="UX/UI design" icon={<Select color="dark-3" />}>
-          Reagan works as a product designer at Bold Commerce in Winnipeg, MB
-          where she focuses on user experience and user interface design
-        </CVItem>
-        <CVItem
-          heading="Bachelor of Science - Computer Science"
-          icon={<PersonalComputer color="dark-3" />}
-        >
-          In 2017, Reagan completed her Bachelor of Science with a major in
-          Computer Science from the University of Manitoba
-        </CVItem>
-        <CVItem heading="Front end development" icon={<Code color="dark-2" />}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend
-          mauris in ipsum consequat gravida. Vivamus ultrices dolor eget est
-          sollicitudin efficitur.
-        </CVItem>
-      </Grid>
-      <Box fill="horizontal" align="center">
-        <Box width="40vw" pad={{ top: "xlarge" }}>
-          <Button fill="horizontal">View full CV</Button>
-        </Box>
-      </Box>
-    </Box>
-  );
-};
+        {curr.content}
+      </CVSummaryItem>
+    </CVContainer>
+  )
+}
 
-const CVItem = ({
-  heading,
-  children,
-  icon,
-}: {
-  heading: String;
-  children: any;
-  icon: JSX.Element;
-}) => {
+const CVSummaryItem = ({children, icon}:{icon?:JSX.Element, children?:any}) => {
+  const block ={
+      hidden:{
+        opacity: 0,
+      },
+      show: {
+        opacity: 1,
+        x: 80,
+        animate:{
+          transition: {repeat: "infinity"}
+        }
+      }
+  }
+
   return (
-    <Grid rows={["auto", "flex"]}>
-      <Box pad={{ bottom: "xsmall" }}>{icon}</Box>
-      <Box width={{ max: "350px" }} align="start" gap="xsmall">
-        <Heading level={3}>{heading}</Heading>
-        <Body>{children}</Body>
-      </Box>
-    </Grid>
-  );
-};
+      <CVItemAnimate
+        variants={block}
+        initial="hidden"
+        animate="show"
+      >
+        <span 
+          style={{display: "flex", gap:"10px"}}
+        >
+          {icon}
+          <LineItem>
+            {children}
+          </LineItem>
+        </span>
 
-const Body = styled(Text)`
-  color: ${(props) => props.theme.global.colors["dark-2"]};
-  font-size: 0.9rem;
+        <Line 
+          transition={{ ease: "easeOut", duration: 1 }}
+          animate={{width: "100%"}}
+        />
+      </CVItemAnimate>
+  )
+}
+
+
+
+
+const LineItem = ({children}:{children:string}) => {
+  const characters = children.split("");
+
+  return (
+    <AnimateText>
+      {characters.map((item, i)=> {
+        let del = (i*TYPEWRITER_KEYPRESS);
+        return (
+          <AnimateChar
+            key={item+i}
+            animate={{opacity: 1}}
+            transition={{ delay: del, duration:SHOWCHAR}}
+          >
+            {item} 
+          </AnimateChar>
+        )
+      })}
+      
+    </AnimateText>
+  )
+}
+
+const CVContainer = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`
+
+const AnimateText = styled.div`
   text-align: start;
-  line-height: 1.1rem;
-`;
+  margin-bottom: 12px;
+`
+
+const Line = styled(motion.div)`
+  position: relative;
+  width: 0%;
+  border: 1px solid white;
+  background: #FFFFFF;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-height: 10px;
+    min-width: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+  }
+`
+
+const CVItemAnimate = styled(motion.div)`
+  margin-bottom: 12px;
+  top: 50%;
+  position: relative;
+  width: 100%;
+`
+
+const AnimateChar = styled(motion.span)`
+  opacity: 0;
+`
 
 export const GradientBox = styled(Box)`
   background: linear-gradient(90deg, #fbf9f7 10%, rgba(251, 249, 247, 0) 75%);
 `;
 
 export default Landing;
+

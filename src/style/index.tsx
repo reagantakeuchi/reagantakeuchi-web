@@ -5,17 +5,25 @@ import { Anchor, Text, Button as ButtonG, Box, ButtonType } from "grommet";
 export * from "./headings";
 
 export const SubText = styled(Text)`
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
   line-height: 2rem;
   text-transform: uppercase;
-  color: ${(props) => props.theme.global.colors["dark-1"]};
+  color: #ffffff;
+    @media (max-width: 480px) {
+      font-size: .8rem;
+      line-height: 1.2rem;
+  }
 `;
 
 export const HeroHeading = styled(Text)`
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 5rem;
   line-height: 5.5rem;
   letter-spacing: 0.2rem;
+  @media (max-width: 480px) {
+      font-size: 3rem;
+      line-height: 3.5rem;
+  }
 `;
 
 export const Button = ({
@@ -94,4 +102,11 @@ export const RedirectIcon = styled(Anchor)<{ stroke?: string }>`
             }
         `;
   }}
+`;
+
+export const Body = styled(Text)`
+  color: ${(props) => props.theme.global.colors["dark-2"]};
+  font-size: 0.9rem;
+  text-align: start;
+  line-height: 1.1rem;
 `;
