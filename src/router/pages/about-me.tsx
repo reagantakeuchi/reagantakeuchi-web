@@ -10,100 +10,57 @@ import styled, { keyframes } from "styled-components";
 import { instagram } from "../../static/links";
 
 export const AboutMe = () => {
-  const device = useDeviceContext();
-
   return (
     <Box
       height="100%"
-      justify="between"
+      justify="around"
+      border
       width={{ max: "100%" }}
-      style={{ overflow: "hidden" }}
     >
-      <Box>
-        <AboutHeading device={device} />
-      </Box>
       <Box
         width="100%"
         height={{ min: "300px" }}
         direction="row"
-        pad={{ top: "large" }}
+        justify="center"
+
       >
         <Box
-          width="50%"
-          background="brand"
+          width="20%"
+          height="400px"
           align="center"
-          justify="center"
           pad={{ left: "large" }}
         >
-          <Heading textAlign="start" level={2}>
-            Full Stack Software Developer + Freelance Digital Artist <br />
-            By Day
-          </Heading>
+          <Image fit="contain" src={MeAndMill} />
         </Box>
         <Box
-          width="50%"
+          width="60%"
           height={{ min: "300px" }}
           pad={{ right: "large" }}
           justify="center"
         >
-          <Heading level={2} textAlign="end">
-            Functional Fitness Coach + <br />
-            Stretchy Pant Consultant <br />
-            By Night
-          </Heading>
+          <Box align="start">
+            <Heading textAlign="start" level={2}>
+              I'm Reagan (she/her),
+              <br />
+              <Text color="brand" size={"medium"}>
+                and that's Millie (also she/her)
+              </Text>
+              <br />
+              <Bio size="small" />
+            </Heading>
+            <Button>
+              Let's chat!
+            </Button>
+          </Box>
         </Box>
       </Box>
-      {device === "mobile" ? <MobileBio /> : <DesktopBio />}
-      <BottomButtons />
+      {/* <BottomButtons /> */}
     </Box>
   );
 };
 
 export default AboutMe;
 
-const DesktopBio = () => (
-  <Box direction="row" pad={{ horizontal: "xlarge", vertical: "large" }}>
-    <Box pad={{ horizontal: "large" }}>
-      <Image src={MeAndMill} height="600px" opacity="0.7" />
-    </Box>
-    <Box align="center">
-      <Text size="100px" alignSelf="start" weight="bold">
-        Hi!
-      </Text>
-      <Heading textAlign="start" level={2}>
-        I'm Reagan (she/her),
-        <br />
-        <Text color="neutral-4" size={"medium"}>
-          and that's Millie (also she/her)
-        </Text>
-        <br />
-        <Bio size="medium" />
-      </Heading>
-    </Box>
-  </Box>
-);
-
-const MobileBio = () => (
-  <Box pad={{ horizontal: "xlarge", vertical: "large" }} gap="large">
-    <Box pad={{ horizontal: "large" }} direction="row">
-      <Image src={MeAndMill} height="400px" opacity="0.7" />
-      <Text size="100px" alignSelf="center" weight="bold">
-        Hi!
-      </Text>
-    </Box>
-    <Box align="center">
-      <Heading textAlign="start" level={2}>
-        I'm Reagan (she/her),
-        <br />
-        <Text color="neutral-4" size={"medium"}>
-          and that's Millie (also she/her)
-        </Text>
-        <br />
-        <Bio size="small" />
-      </Heading>
-    </Box>
-  </Box>
-);
 
 const BottomButtons = () => {
   const history = useHistory();
@@ -195,19 +152,22 @@ const AboutHeading = ({ device }: { device: Devices }) => (
 
 const Bio = ({ ...props }: TextProps) => (
   <Text {...props}>
-    I majored in Computer Science at the University of Manitoba where I
-    graduated in 2017
-    <br />I run a small business creating custom digital art{" "}
+    I graduated from the University of Manitoba in 2017 with a major in Computer Science
+    <br />
+    My full time gig is as a product designer at{" "}
+    <A href="http://boldcommerce.com">Bold Commerce</A>
+    <br />
+
+    A little more about me... <br/>
+    I love to create - I run a small business creating custom digital art{" "}
     <A href={instagram}>@designbyrea</A> <br />
-    I freelance graphic design from time-to-time <br />
-    My full time gig is as a developer at{" "}
-    <A href="http://sightlineinnovation.com">Sightline Innovation Inc.</A>
-    <br />
-    I'm a Level 2 CrossFit Trainer at{" "}
-    <A href="https://norakcrossfit.com/">CrossFit Norak </A>in Winnipeg, MB{" "}
-    <br />
-    And when I'm not doing those things,
-    <br /> I'm training my girl Millie over there to be a therapy dog!
+    and do some freelance design work in my spare time <br/>
+
+    I have a passion for functional fitness and Olympic Weightlifting - I get my fix at {" "}
+
+    <A href="https://undefeatedperformance.ca/">Undefeated Health & Performance </A>
+    where I'm a Level 2 CrossFit Trainer
+
   </Text>
 );
 
